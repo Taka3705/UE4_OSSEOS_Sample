@@ -67,7 +67,7 @@ bool AMyPlayerController::HostSession()
 			bool bResult = Sessions->CreateSession(*UniqueNetIdptr, SESSION_NAME, *SessionSettings);
 
 			if (bResult) {
-				// DISPLAY_LOG("CreateSession: Success");
+				DISPLAY_LOG("CreateSession: Success");
 				return true;
 			}
 			else {
@@ -117,7 +117,7 @@ void AMyPlayerController::OnFindSessionsCompleteDelegate(bool bWasSuccessful) {
 		}
 		else {
 			const TCHAR* SessionId = *SearchSettings->SearchResults[0].GetSessionIdStr();
-			// DISPLAY_LOG("Session ID: %s", SessionId);
+			DISPLAY_LOG("Session ID: %s", SessionId);
 			JoinSession(SearchSettings->SearchResults[0]);
 		}
 	}
@@ -138,7 +138,7 @@ void AMyPlayerController::JoinSession(FOnlineSessionSearchResult SearchResult) {
 
 				TSharedPtr<const FUniqueNetId> UniqueNetIdptr = GetLocalPlayer()->GetPreferredUniqueNetId().GetUniqueNetId();
 				Sessions->JoinSession(*UniqueNetIdptr, SESSION_NAME, SearchResult);
-				// DISPLAY_LOG("Join Session");
+				DISPLAY_LOG("Join Session");
 			}
 			else {
 				DISPLAY_LOG("Invalid session.");
